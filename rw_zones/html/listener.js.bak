@@ -1,0 +1,33 @@
+$(function(){
+	window.onload = (e) => {
+        /* 'links' the js with the Nui message from main.lua */
+		window.addEventListener('message', (event) => {
+            //document.querySelector("#logo").innerHTML = " "
+			var item = event.data;
+			if (item !== undefined && item.type === "ui") {
+                /* if the display is true, it will show */
+				if (item.state === "g") {
+                    $("#neutralzone").hide();
+                    $("#redzone").hide();
+                    $("#greenzone").hide();
+
+                    $("#greenzone").show();
+
+				} else if (item.state === "r") {
+                    $("#neutralzone").hide();
+                    $("#redzone").hide();
+                    $("#greenzone").hide();
+
+                    $("#redzone").show();
+                }
+                else{
+                    $("#neutralzone").hide();
+                    $("#redzone").hide();
+                    $("#greenzone").hide();
+
+                    $("#neutralzone").hide();
+                }
+			}
+		});
+	};
+});
